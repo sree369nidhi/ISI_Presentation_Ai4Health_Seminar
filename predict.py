@@ -7,7 +7,7 @@ import shutil
 
 
 # print('Imga')
-print('Image Preprocessing - Optic Disc Localization')
+print('\nImage Preprocessing - Optic Disc Localization')
 
 files = [f for f in os.listdir("/content/Dataset_C0GM/data/assets/Image Dataset/URL") if f.endswith('.jpg')]
 resultfrac = 0.4
@@ -133,7 +133,7 @@ for file in files:
 
 # ! git clone https://github.com/sree369nidhi/ISI_Presentation_Ai4Health_Seminar
 
-print('Predicting the Test data')
+print('\nPredicting the Test data')
 
 import tensorflow as tf
 from tensorflow.keras.applications import VGG19
@@ -232,4 +232,4 @@ for entry in metadata:
 with open('/content/Image_Metadata.json', 'w') as file:
     json.dump(metadata, file)
 
-print('updated JSON file: Image_Metadata.json')
+print('\nUpdated JSON file: Image_Metadata.json')
