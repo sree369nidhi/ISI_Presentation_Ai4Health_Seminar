@@ -232,4 +232,4 @@ for entry in metadata:
 with open('/content/Image_Metadata.json', 'w') as file:
     json.dump(metadata, file)
 
-print('updated JSON file: Image_Metadata')
+print('updated JSON file: Image_Metadata.json')
