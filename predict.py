@@ -9,7 +9,7 @@ import shutil
 # print('Imga')
 print('\nImage Preprocessing - Optic Disc Localization')
 
-files = [f for f in os.listdir("/content/Dataset_C0GM/data/assets/Image Dataset/URL") if f.endswith('.jpg')]
+files = [f for f in os.listdir(os.path.join(bag_path, "data/assets/Image Dataset/URL")) if f.endswith('.jpg')]
 resultfrac = 0.4
 discfrac = 0.35
 step = 5
@@ -23,7 +23,7 @@ minbrightdisc = 0.50
 
 for file in files:
     print(file)
-    im = cv2.imread(os.path.join("/content/Dataset_C0GM/data/assets/Image Dataset/URL", file))
+    im = cv2.imread(os.path.join(bag_path, "data/assets/Image Dataset/URL", file))
     g = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
     x, y = g.shape
     mx = max(x, y)
@@ -92,17 +92,18 @@ for file in files:
         # cv2.waitKey(0)
         # cv2.imwrite("../Suspect/cropped2/c_" + file, bestdisc)
             # Right before saving the images
-        output_directory = "/content/Dataset_C0GM/data/assets/Image Dataset/URL_Cropped/"
+        output_directory = os.path.join(bag_path, "data/assets/Image Dataset/URL_Cropped/"
         os.makedirs(output_directory, exist_ok=True)
 
         # bestxy.save("../Suspect/cropped2/c_" + file)
         # bestxy.resize((224, 224)).save("../Suspect/cropped2/224c_" + file)
-        cv2.imwrite("/content/Dataset_C0GM/data/assets/Image Dataset/URL_Cropped/" + file, cv2.resize(bestdisc, (224, 224)))
+        cv2.imwrite(os.path.join(bag_path, "data/assets/Image Dataset/URL_Cropped/", file), cv2.resize(bestdisc, (224, 224)))
         # cv2.imwrite("../Suspect/cropped2/299c_" + file, cv2.resize(bestdisc, (299, 299)))
     else:
         print('first algo failed')
         # Read the image and convert it to grayscale
-        img = cv2.imread(os.path.join("/content/Dataset_C0GM/data/assets/Image Dataset/URL", file))
+        img = cv2.imread(os.path.join(bag_path, "data/assets/Image Dataset/URL", file))
+
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
         # print('hi')
@@ -129,7 +130,8 @@ for file in files:
         x2, y2 = x + radius, y + radius
         cropped_img = cropped_img[y1:y2, x1:x2]
 
-        cv2.imwrite("/content/Dataset_C0GM/data/assets/Image Dataset/URL_Cropped/" + file, cv2.resize(cropped_img, (224, 224)))
+        cv2.imwrite(os.path.join(bag_path, "data/assets/Image Dataset/URL_Cropped", file), cv2.resize(cropped_img, (224, 224)))
+
 
 # ! git clone https://github.com/sree369nidhi/ISI_Presentation_Ai4Health_Seminar
 
@@ -211,7 +213,8 @@ with open('/content/Diagnosis.json', 'r') as file:
 # Iterate over each image in the metadata
 for entry in metadata:
     filename = entry['Filename']
-    image_path = os.path.join('/content/Dataset_C0GM/data/assets/Image Dataset/URL_Cropped', filename)
+    image_path = os.path.join(bag_path, "data/assets/Image Dataset/URL_Cropped", filename)
+
 
     # Load and preprocess the image
     image = cv2.imread(image_path)
