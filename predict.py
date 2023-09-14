@@ -6,10 +6,12 @@ from tqdm import tqdm
 import shutil
 import argparse
 
-# 1. Parse the bag_path argument
-parser = argparse.ArgumentParser(description="Predict on given images.")
-parser.add_argument("bag_path", help="Path to the bag directory.")
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Predict on images after preprocessing.')
+parser.add_argument('--bag_path', type=str, help='Path to the data directory')
 args = parser.parse_args()
+
+
 
 # Now, you can use args.bag_path everywhere in your script
 bag_path = args.bag_path
