@@ -205,7 +205,7 @@ model.load_weights(path)
 import json
 
 # Load the JSON file
-with open('/content/Image_Metadata.json', 'r') as file:
+with open('/content/Diagnosis.json', 'r') as file:
     metadata = json.load(file)
 
 # Iterate over each image in the metadata
@@ -224,12 +224,12 @@ for entry in metadata:
 
     # Update the Image_Output field
     if prediction >= 0.65:
-        entry['Image_Output'] = 'C0FW'
+        entry['Diagnosis_Vocab'] = 'C0FW'
     else:
-        entry['Image_Output'] = 'C0FY'
+        entry['Diagnosis_Vocab'] = 'C0FY'
 
 # Save the updated JSON file
-with open('/content/Image_Metadata.json', 'w') as file:
+with open('/content/Diagnosis.json', 'w') as file:
     json.dump(metadata, file)
 
-print('\nUpdated JSON file: Image_Metadata.json')
+print('\nUpdated JSON file: Diagnosis.json')
