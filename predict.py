@@ -222,7 +222,7 @@ with open('/content/Diagnosis.json', 'r') as file:
 
 # Iterate over each image in the metadata
 for entry in metadata:
-    print(entry.keys())
+    # print(entry.keys())
     filename = entry['Filename']
     image_path = os.path.join(bag_path, "data/assets/Image Dataset/URL_Cropped", filename)
 
