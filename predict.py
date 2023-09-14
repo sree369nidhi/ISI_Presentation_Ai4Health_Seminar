@@ -4,7 +4,15 @@ import numpy as np
 
 from tqdm import tqdm
 import shutil
+import argparse
 
+# 1. Parse the bag_path argument
+parser = argparse.ArgumentParser(description="Predict on given images.")
+parser.add_argument("bag_path", help="Path to the bag directory.")
+args = parser.parse_args()
+
+# Now, you can use args.bag_path everywhere in your script
+bag_path = args.bag_path
 
 # print('Imga')
 print('\nImage Preprocessing - Optic Disc Localization')
@@ -92,7 +100,7 @@ for file in files:
         # cv2.waitKey(0)
         # cv2.imwrite("../Suspect/cropped2/c_" + file, bestdisc)
             # Right before saving the images
-        output_directory = os.path.join(bag_path, "data/assets/Image Dataset/URL_Cropped/"
+        output_directory = os.path.join(bag_path, "data/assets/Image Dataset/URL_Cropped/")
         os.makedirs(output_directory, exist_ok=True)
 
         # bestxy.save("../Suspect/cropped2/c_" + file)
