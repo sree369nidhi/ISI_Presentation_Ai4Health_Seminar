@@ -238,9 +238,9 @@ for entry in metadata:
 
     # Update the Image_Output field
     if prediction >= 0.65:
-        entry['Diagnosis_Vocab'] = 'C0FW'
+        entry['Diagnosis_Vocab'] = '2SKA'
     else:
-        entry['Diagnosis_Vocab'] = 'C0FY'
+        entry['Diagnosis_Vocab'] = '2SKC'
 
 # Save the updated JSON file
 with open('/content/Diagnosis.json', 'w') as file:
